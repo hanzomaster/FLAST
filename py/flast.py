@@ -2,16 +2,11 @@ import os
 import time
 import warnings
 
-import numpy as np
-
-from scipy import spatial
-
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.random_projection import johnson_lindenstrauss_min_dim
-from sklearn.random_projection import SparseRandomProjection
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import precision_score, recall_score
-
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.random_projection import (SparseRandomProjection,
+                                       johnson_lindenstrauss_min_dim)
 
 ###############################################################################
 # read data from file
@@ -39,7 +34,8 @@ def getDataPointsInfo(projectBasePath, projectName):
 # compute effectiveness metrics
 
 def computeResults(testLabels, predictLabels):
-    warnings.filterwarnings("error")  # to catch warnings, e.g., "prec set to 0.0"
+    # to catch warnings, e.g., "prec set to 0.0"
+    warnings.filterwarnings("error")
     try:
         precision = precision_score(testLabels, predictLabels)
     except:
