@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Results (mount as volume instead)
+results/
+
+# Documentation images (not needed for runtime)
+parameters/*.png
+pseudocode/*.png
+
+# Extracted dataset (will be extracted in container)
+dataset/
+
+# Misc
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

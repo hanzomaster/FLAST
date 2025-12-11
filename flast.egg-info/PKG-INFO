@@ -1,3 +1,38 @@
+Metadata-Version: 2.4
+Name: flast
+Version: 1.0.0
+Summary: Know Your Neighbor: Fast Static Prediction of Test Flakiness
+Author: FLAST Authors
+License: GPL-3.0
+Project-URL: Homepage, https://github.com/FlakinessStaticDetection/FLAST
+Project-URL: Repository, https://github.com/FlakinessStaticDetection/FLAST
+Project-URL: Documentation, https://github.com/FlakinessStaticDetection/FLAST#readme
+Keywords: test-flakiness,machine-learning,static-analysis,knn
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Testing
+Classifier: Typing :: Typed
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=2.1.0
+Requires-Dist: scipy>=1.14.0
+Requires-Dist: scikit-learn>=1.5.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0.0; extra == "dev"
+Requires-Dist: ruff>=0.7.0; extra == "dev"
+Requires-Dist: mypy>=1.13.0; extra == "dev"
+Dynamic: license-file
+
 # FLAST: Know Your Neighbor - Fast Static Prediction of Test Flakiness
 
 [![CI](https://github.com/FlakinessStaticDetection/FLAST/actions/workflows/ci.yml/badge.svg)](https://github.com/FlakinessStaticDetection/FLAST/actions/workflows/ci.yml)
