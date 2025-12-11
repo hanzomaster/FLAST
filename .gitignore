@@ -1,3 +1,22 @@
 dataset/
 **/__pycache__/
 .vscode/settings.json
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
