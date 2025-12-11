@@ -41,9 +41,22 @@ from src.flast_enhanced import (
 )
 
 __all__ = [
+    "FLAKINESS_PATTERNS",
+    # Enhanced FLAST
+    "EnhancedConfig",
+    "EnhancedFLAST",
+    "HybridFeatures",
+    "analyze_flakiness_patterns",
+    "apply_smote",
     # Original FLAST
     "computeResults",
+    "compute_class_weights",
     "compute_results",
+    "compute_results_extended",
+    "enhanced_classification",
+    "enhanced_vectorization",
+    "extract_flakiness_features",
+    "extract_structural_features",
     "flastClassification",
     "flastVectorization",
     "flast_classification",
@@ -52,19 +65,6 @@ __all__ = [
     "getDataPointsInfo",
     "get_data_points",
     "get_data_points_info",
-    # Enhanced FLAST
-    "EnhancedConfig",
-    "EnhancedFLAST",
-    "HybridFeatures",
-    "FLAKINESS_PATTERNS",
-    "enhanced_vectorization",
-    "enhanced_classification",
-    "extract_flakiness_features",
-    "extract_structural_features",
-    "apply_smote",
-    "compute_class_weights",
-    "compute_results_extended",
-    "analyze_flakiness_patterns",
     "get_flakiness_pattern_names",
     "transform_test_data",
 ]

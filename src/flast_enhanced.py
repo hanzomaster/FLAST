@@ -291,9 +291,7 @@ def get_data_points(path: Path) -> list[str]:
     return data_points
 
 
-def get_data_points_info(
-    project_base_path: Path, project_name: str
-) -> tuple[list[str], list[str]]:
+def get_data_points_info(project_base_path: Path, project_name: str) -> tuple[list[str], list[str]]:
     """Get flaky and non-flaky test methods for a project.
 
     Args:
@@ -969,9 +967,7 @@ class EnhancedFLAST:
             Self for method chaining.
         """
         # Vectorize
-        vectors, self._metadata = enhanced_vectorization(
-            data_points, self.config, hybrid_features
-        )
+        vectors, self._metadata = enhanced_vectorization(data_points, self.config, hybrid_features)
 
         # Convert to array
         if issparse(vectors):
@@ -1006,10 +1002,12 @@ class EnhancedFLAST:
         if not self._is_fitted:
             raise RuntimeError("Classifier must be fitted before prediction")
 
+        # Type narrowing for mypy - these are guaranteed to be set after fit()
+        assert self._train_data is not None
+        assert self._train_labels is not None
+
         # Transform using fitted transformers
-        vectors = transform_test_data(
-            data_points, self.config, self._metadata, hybrid_features
-        )
+        vectors = transform_test_data(data_points, self.config, self._metadata, hybrid_features)
 
         test_data = vectors.toarray() if issparse(vectors) else np.asarray(vectors)
 
@@ -1040,10 +1038,12 @@ class EnhancedFLAST:
         if not self._is_fitted:
             raise RuntimeError("Classifier must be fitted before prediction")
 
+        # Type narrowing for mypy - these are guaranteed to be set after fit()
+        assert self._train_data is not None
+        assert self._train_labels is not None
+
         # Transform using fitted transformers
-        vectors = transform_test_data(
-            data_points, self.config, self._metadata, hybrid_features
-        )
+        vectors = transform_test_data(data_points, self.config, self._metadata, hybrid_features)
 
         test_data = vectors.toarray() if issparse(vectors) else np.asarray(vectors)
 

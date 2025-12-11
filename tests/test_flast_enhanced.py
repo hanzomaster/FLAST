@@ -333,9 +333,7 @@ class TestEnhancedClassification:
         train_data, test_data, train_labels = sample_enhanced_data
         config = EnhancedConfig(handle_imbalance="smote", smote_k_neighbors=3)
 
-        _, _, predictions, _ = enhanced_classification(
-            train_data, train_labels, test_data, config
-        )
+        _, _, predictions, _ = enhanced_classification(train_data, train_labels, test_data, config)
 
         assert len(predictions) == len(test_data)
 
@@ -346,9 +344,7 @@ class TestEnhancedClassification:
         train_data, test_data, train_labels = sample_enhanced_data
         config = EnhancedConfig(handle_imbalance="weights")
 
-        _, _, predictions, _ = enhanced_classification(
-            train_data, train_labels, test_data, config
-        )
+        _, _, predictions, _ = enhanced_classification(train_data, train_labels, test_data, config)
 
         assert len(predictions) == len(test_data)
 
@@ -681,14 +677,10 @@ class TestEnhancedConfig:
 class TestIntegration:
     """Integration tests for the full enhanced FLAST pipeline."""
 
-    def test_full_pipeline_with_all_features(
-        self, temp_dataset_dir: Path
-    ) -> None:
+    def test_full_pipeline_with_all_features(self, temp_dataset_dir: Path) -> None:
         """Test the full enhanced pipeline with all features enabled."""
         # Load data
-        flaky, non_flaky = flast_enhanced.get_data_points_info(
-            temp_dataset_dir, "test-project"
-        )
+        flaky, non_flaky = flast_enhanced.get_data_points_info(temp_dataset_dir, "test-project")
         all_data = flaky + non_flaky
         labels = [1] * len(flaky) + [0] * len(non_flaky)
 
