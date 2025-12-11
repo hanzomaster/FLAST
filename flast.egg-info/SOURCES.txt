@@ -10,6 +10,8 @@ src/__init__.py
 src/compare_pinto.py
 src/eff_eff.py
 src/flast.py
+src/flast_enhanced.py
 src/params.py
 src/py.typed
 tests/test_flast.py
+tests/test_flast_enhanced.py
