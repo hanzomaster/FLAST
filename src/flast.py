@@ -45,9 +45,7 @@ def get_data_points(path: Path) -> list[str]:
     return data_points
 
 
-def get_data_points_info(
-    project_base_path: Path, project_name: str
-) -> tuple[list[str], list[str]]:
+def get_data_points_info(project_base_path: Path, project_name: str) -> tuple[list[str], list[str]]:
     """Get flaky and non-flaky test methods for a project.
 
     Args:
@@ -72,9 +70,7 @@ def getDataPoints(path: str) -> list[str]:
     return get_data_points(Path(path))
 
 
-def getDataPointsInfo(
-    projectBasePath: str, projectName: str
-) -> tuple[list[str], list[str]]:
+def getDataPointsInfo(projectBasePath: str, projectName: str) -> tuple[list[str], list[str]]:
     """Legacy wrapper for get_data_points_info.
 
     Deprecated: Use get_data_points_info() instead.

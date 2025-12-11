@@ -56,9 +56,7 @@ def flast_knn(
     )
     data_points = data_points_flaky + data_points_non_flaky
     z = flast.flastVectorization(data_points, dim=dim, eps=eps)
-    data_points_list: NDArray[Any] = np.array(
-        [z[i].toarray() for i in range(z.shape[0])]
-    )
+    data_points_list: NDArray[Any] = np.array([z[i].toarray() for i in range(z.shape[0])])
     data_labels_list: NDArray[Any] = np.array(
         [1] * len(data_points_flaky) + [0] * len(data_points_non_flaky)
     )
@@ -88,9 +86,7 @@ def flast_knn(
         data_points = data_points_flaky + data_points_non_flaky
         z = flast.flastVectorization(data_points, dim=dim, eps=eps)
         data_points_list = np.array([z[i].toarray() for i in range(z.shape[0])])
-        data_labels_list = np.array(
-            [1] * len(data_points_flaky) + [0] * len(data_points_non_flaky)
-        )
+        data_labels_list = np.array([1] * len(data_points_flaky) + [0] * len(data_points_non_flaky))
 
         train_data, test_data = data_points_list[trn_idx], data_points_list[tst_idx]
         train_labels, test_labels = data_labels_list[trn_idx], data_labels_list[tst_idx]
@@ -117,9 +113,7 @@ def flast_knn(
         )
         preparation_time = (vec_time * len(train_data) / len(data_points)) + train_time
         prediction_time = (vec_time / len(data_points)) + (test_time / len(test_data))
-        precision, recall = flast.computeResults(
-            test_labels.tolist(), predict_labels
-        )
+        precision, recall = flast.computeResults(test_labels.tolist(), predict_labels)
 
         print(precision, recall)
         if precision != "-":
@@ -171,10 +165,7 @@ if __name__ == "__main__":
     # DISTANCE
     out_file = "params-distance.csv"
     with (out_dir / out_file).open("w") as fo:
-        fo.write(
-            "distance,k,sigma,eps,precision,recall,storage,"
-            "preparationTime,predictionTime\n"
-        )
+        fo.write("distance,k,sigma,eps,precision,recall,storage,preparationTime,predictionTime\n")
 
     k = 7
     sigma = 0.5
@@ -200,9 +191,7 @@ if __name__ == "__main__":
                 storage,
                 avg_t_prep,
                 avg_t_pred,
-            ) = flast_knn(
-                out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params
-            )
+            ) = flast_knn(out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params)
             with (out_dir / out_file).open("a") as fo:
                 fo.write(
                     f"{params['metric']},{k},{sigma},{eps},{avg_p},{avg_r},"
@@ -212,10 +201,7 @@ if __name__ == "__main__":
     # EPSILON
     out_file = "params-eps.csv"
     with (out_dir / out_file).open("w") as fo:
-        fo.write(
-            "distance,k,sigma,eps,precision,recall,storage,"
-            "preparationTime,predictionTime\n"
-        )
+        fo.write("distance,k,sigma,eps,precision,recall,storage,preparationTime,predictionTime\n")
 
     k = 7
     sigma = 0.5
@@ -235,9 +221,7 @@ if __name__ == "__main__":
             storage,
             avg_t_prep,
             avg_t_pred,
-        ) = flast_knn(
-            out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params
-        )
+        ) = flast_knn(out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params)
         with (out_dir / out_file).open("a") as fo:
             fo.write(
                 f"{params['metric']},{k},{sigma},{eps},{avg_p},{avg_r},"
@@ -247,10 +231,7 @@ if __name__ == "__main__":
     # NEIGHBORS K
     out_file = "params-k.csv"
     with (out_dir / out_file).open("w") as fo:
-        fo.write(
-            "distance,k,sigma,eps,precision,recall,storage,"
-            "preparationTime,predictionTime\n"
-        )
+        fo.write("distance,k,sigma,eps,precision,recall,storage,preparationTime,predictionTime\n")
 
     k = 7
     sigma = 0.5
@@ -270,9 +251,7 @@ if __name__ == "__main__":
             storage,
             avg_t_prep,
             avg_t_pred,
-        ) = flast_knn(
-            out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params
-        )
+        ) = flast_knn(out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params)
         with (out_dir / out_file).open("a") as fo:
             fo.write(
                 f"{params['metric']},{k},{sigma},{eps},{avg_p},{avg_r},"
@@ -282,10 +261,7 @@ if __name__ == "__main__":
     # THRESHOLD SIGMA
     out_file = "params-sigma.csv"
     with (out_dir / out_file).open("w") as fo:
-        fo.write(
-            "distance,k,sigma,eps,precision,recall,storage,"
-            "preparationTime,predictionTime\n"
-        )
+        fo.write("distance,k,sigma,eps,precision,recall,storage,preparationTime,predictionTime\n")
 
     k = 7
     sigma = 0.5
@@ -294,8 +270,27 @@ if __name__ == "__main__":
     params = {"algorithm": "brute", "metric": "cosine", "weights": "uniform"}
 
     sigma_values = [
-        0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45,
-        0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1,
+        0,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3,
+        0.35,
+        0.4,
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95,
+        1,
     ]
     for sigma in sigma_values:
         print(f"{sigma=}")
@@ -309,9 +304,7 @@ if __name__ == "__main__":
             storage,
             avg_t_prep,
             avg_t_pred,
-        ) = flast_knn(
-            out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params
-        )
+        ) = flast_knn(out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params)
         with (out_dir / out_file).open("a") as fo:
             fo.write(
                 f"{params['metric']},{k},{sigma},{eps},{avg_p},{avg_r},"
@@ -322,8 +315,7 @@ if __name__ == "__main__":
     out_file = "params-training.csv"
     with (out_dir / out_file).open("w") as fo:
         fo.write(
-            "trainingSetSize,k,sigma,eps,precision,recall,storage,"
-            "preparationTime,predictionTime\n"
+            "trainingSetSize,k,sigma,eps,precision,recall,storage,preparationTime,predictionTime\n"
         )
 
     k = 7
@@ -347,9 +339,7 @@ if __name__ == "__main__":
                 storage,
                 avg_t_prep,
                 avg_t_pred,
-            ) = flast_knn(
-                out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params
-            )
+            ) = flast_knn(out_dir, project_base_path, project_name, kf, dim, eps, k, sigma, params)
             with (out_dir / out_file).open("a") as fo:
                 fo.write(
                     f"{training_set_size},{k},{sigma},{eps},{avg_p},{avg_r},"

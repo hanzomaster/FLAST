@@ -55,9 +55,7 @@ def flast_knn(
     )
     data_points = data_points_flaky + data_points_non_flaky
     z = flast.flastVectorization(data_points, dim=dim, eps=eps)
-    data_points_list: NDArray[Any] = np.array(
-        [z[i].toarray() for i in range(z.shape[0])]
-    )
+    data_points_list: NDArray[Any] = np.array([z[i].toarray() for i in range(z.shape[0])])
     data_labels_list: NDArray[Any] = np.array(
         [1] * len(data_points_flaky) + [0] * len(data_points_non_flaky)
     )
@@ -105,9 +103,7 @@ def flast_knn(
         )
         preparation_time = (vec_time * len(train_data) / len(data_points)) + train_time
         prediction_time = (vec_time / len(data_points)) + (test_time / len(test_data))
-        precision, recall = flast.computeResults(
-            test_labels.tolist(), predict_labels
-        )
+        precision, recall = flast.computeResults(test_labels.tolist(), predict_labels)
 
         print(precision, recall)
         if precision != "-":

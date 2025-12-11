@@ -43,9 +43,7 @@ class TestDataLoading:
 
     def test_legacy_get_data_points_info(self, temp_dataset_dir: Path) -> None:
         """Test legacy function getDataPointsInfo."""
-        flaky, non_flaky = flast.getDataPointsInfo(
-            str(temp_dataset_dir), "test-project"
-        )
+        flaky, non_flaky = flast.getDataPointsInfo(str(temp_dataset_dir), "test-project")
 
         assert len(flaky) == 2
         assert len(non_flaky) == 3
@@ -105,9 +103,7 @@ class TestVectorization:
         assert result.shape[0] == len(sample_data_points)
         assert result.shape[1] > 0  # Has features
 
-    def test_flast_vectorization_with_projection(
-        self, sample_data_points: list[str]
-    ) -> None:
+    def test_flast_vectorization_with_projection(self, sample_data_points: list[str]) -> None:
         """Test vectorization with random projection."""
         # Need more samples for JL projection
         data_points = sample_data_points * 20  # 100 samples
@@ -116,9 +112,7 @@ class TestVectorization:
         assert result.shape[0] == len(data_points)
         # With projection, dimensions should be reduced
 
-    def test_flast_vectorization_custom_dim(
-        self, sample_data_points: list[str]
-    ) -> None:
+    def test_flast_vectorization_custom_dim(self, sample_data_points: list[str]) -> None:
         """Test vectorization with custom target dimensions."""
         data_points = sample_data_points * 20
         target_dim = 10
@@ -282,9 +276,7 @@ class TestComputePrediction:
 
     def test_prediction_both_infinite(self) -> None:
         """Test prediction when both are infinite."""
-        result = flast._compute_prediction(
-            phi=float("inf"), psi=float("inf"), sigma=0.5
-        )
+        result = flast._compute_prediction(phi=float("inf"), psi=float("inf"), sigma=0.5)
         assert result == 0
 
 
