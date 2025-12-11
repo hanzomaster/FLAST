@@ -9,9 +9,9 @@ services:
     command: >
       sh -c "
         echo 'Running RQ1 & RQ2: Effectiveness and Efficiency...' &&
-        python py/eff_eff.py &&
+        python src/eff_eff.py &&
         echo 'Running RQ3: Comparison with Pinto-KNN...' &&
-        python py/compare_pinto.py &&
+        python src/compare_pinto.py &&
         echo 'All experiments completed. Results saved to results/'
       "
 
@@ -22,7 +22,7 @@ services:
       target: production
     volumes:
       - ./results:/app/results
-    command: python py/eff_eff.py
+    command: python src/eff_eff.py
 
   # Run only RQ3
   compare-pinto:
@@ -31,7 +31,7 @@ services:
       target: production
     volumes:
       - ./results:/app/results
-    command: python py/compare_pinto.py
+    command: python src/compare_pinto.py
 
   # Run parameter tuning
   params:
@@ -40,14 +40,14 @@ services:
       target: production
     volumes:
       - ./results:/app/results
-    command: python py/params.py
+    command: python src/params.py
 
   # Run tests
   test:
     build:
       context: .
       target: development
-    command: pytest tests/ -v --cov=py --cov-report=term-missing
+    command: pytest tests/ -v --cov=src --cov-report=term-missing
 
   # Run linting
   lint:
@@ -57,9 +57,9 @@ services:
     command: >
       sh -c "
         echo 'Running Ruff linter...' &&
-        ruff check py/ tests/ &&
+        ruff check src/ tests/ &&
         echo 'Running Ruff formatter check...' &&
-        ruff format --check py/ tests/ &&
+        ruff format --check src/ tests/ &&
         echo 'All checks passed!'
       "
 
@@ -69,7 +69,7 @@ services:
       context: .
       target: development
     volumes:
-      - ./py:/app/py
+      - ./src:/app/src
       - ./tests:/app/tests
       - ./results:/app/results
     command: /bin/bash

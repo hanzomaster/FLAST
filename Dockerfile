@@ -26,7 +26,7 @@ COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copy application code
-COPY py/ ./py/
+COPY src/ ./src/
 COPY dataset.tgz ./
 COPY README.md LICENSE ./
 
@@ -41,7 +41,7 @@ ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 
 # Default command shows help
-CMD ["python", "-c", "print('FLAST: Fast Static Prediction of Test Flakiness\\n\\nAvailable experiments:\\n  python py/eff_eff.py      - RQ1 & RQ2: Effectiveness and Efficiency\\n  python py/compare_pinto.py - RQ3: Comparison with Pinto-KNN\\n  python py/params.py        - Parameter tuning experiments\\n\\nResults will be saved to the results/ directory.')"]
+CMD ["python", "-c", "print('FLAST: Fast Static Prediction of Test Flakiness\\n\\nAvailable experiments:\\n  python src/eff_eff.py      - RQ1 & RQ2: Effectiveness and Efficiency\\n  python src/compare_pinto.py - RQ3: Comparison with Pinto-KNN\\n  python src/params.py        - Parameter tuning experiments\\n\\nResults will be saved to the results/ directory.')"]
 
 # Development stage with additional tools
 FROM production as development

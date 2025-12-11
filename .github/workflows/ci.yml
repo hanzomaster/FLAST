@@ -29,16 +29,16 @@ jobs:
 
       - name: Run linting with Ruff
         run: |
-          ruff check py/ tests/
-          ruff format --check py/ tests/
+          ruff check src/ tests/
+          ruff format --check src/ tests/
 
       - name: Run type checking with mypy
         run: |
-          mypy py/ --ignore-missing-imports
+          mypy src/ --ignore-missing-imports
 
       - name: Run tests with pytest
         run: |
-          pytest tests/ -v --cov=py --cov-report=xml --cov-report=term-missing
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term-missing
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
@@ -61,7 +61,7 @@ jobs:
         run: pip install ruff
 
       - name: Run Ruff linter
-        run: ruff check py/ tests/
+        run: ruff check src/ tests/
 
       - name: Run Ruff formatter check
-        run: ruff format --check py/ tests/
+        run: ruff format --check src/ tests/

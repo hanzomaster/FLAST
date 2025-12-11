@@ -4,18 +4,14 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 import numpy as np
 import pytest
 
-# Add py directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / "py"))
+# Add src directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 import flast
-
-if TYPE_CHECKING:
-    pass
 
 
 class TestDataLoading:
@@ -73,7 +69,7 @@ class TestMetricsComputation:
         test_labels = [0, 0, 0, 0, 0]
         predict_labels = [1, 1, 1, 1, 1]
 
-        precision, recall = flast.compute_results(test_labels, predict_labels)
+        precision, _recall = flast.compute_results(test_labels, predict_labels)
 
         assert precision == 0.0
         # Recall undefined when no positive samples - returns "-"
@@ -234,7 +230,7 @@ class TestClassification:
         knn_params: dict[str, str],
     ) -> None:
         """Test legacy function flastClassification."""
-        train_time, test_time, predictions = flast.flastClassification(
+        _train_time, _test_time, predictions = flast.flastClassification(
             sample_train_data,
             sample_train_labels,
             sample_test_data,
@@ -323,7 +319,7 @@ class TestIntegration:
         )
 
         # Compute metrics
-        precision, recall = flast.compute_results(test_labels, predictions)
+        _precision, _recall = flast.compute_results(test_labels, predictions)
 
         # Basic sanity checks
         assert len(predictions) == len(test_labels)

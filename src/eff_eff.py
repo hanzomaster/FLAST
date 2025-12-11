@@ -11,9 +11,10 @@ import time
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-import flast
 import numpy as np
 from sklearn.model_selection import StratifiedShuffleSplit
+
+import flast
 
 if TYPE_CHECKING:
     from numpy.typing import NDArray
@@ -142,7 +143,7 @@ def flast_knn(
 
 
 # Legacy function name for backward compatibility
-flastKNN = flast_knn  # noqa: N816
+flastKNN = flast_knn
 
 
 if __name__ == "__main__":

@@ -64,7 +64,7 @@ def get_data_points_info(
 
 
 # Legacy function names for backward compatibility
-def getDataPoints(path: str) -> list[str]:  # noqa: N802
+def getDataPoints(path: str) -> list[str]:
     """Legacy wrapper for get_data_points.
 
     Deprecated: Use get_data_points() instead.
@@ -72,7 +72,7 @@ def getDataPoints(path: str) -> list[str]:  # noqa: N802
     return get_data_points(Path(path))
 
 
-def getDataPointsInfo(  # noqa: N802
+def getDataPointsInfo(
     projectBasePath: str, projectName: str
 ) -> tuple[list[str], list[str]]:
     """Legacy wrapper for get_data_points_info.
@@ -116,7 +116,7 @@ def compute_results(
 
 
 # Legacy function name for backward compatibility
-def computeResults(  # noqa: N802
+def computeResults(
     testLabels: list[int], predictLabels: list[int]
 ) -> tuple[float | str, float | str]:
     """Legacy wrapper for compute_results.
@@ -254,7 +254,7 @@ def _compute_prediction(phi: float, psi: float, sigma: float) -> int:
 
 
 # Legacy function names for backward compatibility
-def flastVectorization(  # noqa: N802
+def flastVectorization(
     dataPoints: list[str],
     dim: int = 0,
     eps: float = 0.3,
@@ -266,7 +266,7 @@ def flastVectorization(  # noqa: N802
     return flast_vectorization(dataPoints, dim, eps)
 
 
-def flastClassification(  # noqa: N802
+def flastClassification(
     trainData: NDArray[Any] | spmatrix,
     trainLabels: list[int],
     testData: NDArray[Any] | spmatrix,

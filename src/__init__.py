@@ -4,7 +4,7 @@ This package implements the FLAST algorithm for predicting test flakiness
 using k-Nearest Neighbors classification.
 """
 
-from py.flast import (
+from src.flast import (
     compute_results,
     computeResults,
     flast_classification,
@@ -18,18 +18,16 @@ from py.flast import (
 )
 
 __all__ = [
-    # Modern API
-    "get_data_points",
-    "get_data_points_info",
+    "computeResults",
     "compute_results",
-    "flast_vectorization",
+    "flastClassification",
+    "flastVectorization",
     "flast_classification",
-    # Legacy API (deprecated)
+    "flast_vectorization",
     "getDataPoints",
     "getDataPointsInfo",
-    "computeResults",
-    "flastVectorization",
-    "flastClassification",
+    "get_data_points",
+    "get_data_points_info",
 ]
 
 __version__ = "1.0.0"

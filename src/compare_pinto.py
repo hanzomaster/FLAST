@@ -11,11 +11,12 @@ import time
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-import flast
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import ShuffleSplit
 from sklearn.neighbors import KNeighborsClassifier
+
+import flast
 
 if TYPE_CHECKING:
     from numpy.typing import NDArray
@@ -228,8 +229,8 @@ def pinto_knn(
 
 
 # Legacy function names for backward compatibility
-flastKNN = flast_knn  # noqa: N816
-pintoKNN = pinto_knn  # noqa: N816
+flastKNN = flast_knn
+pintoKNN = pinto_knn
 
 
 if __name__ == "__main__":

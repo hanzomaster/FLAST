@@ -48,12 +48,12 @@ Documentation = "https://github.com/FlakinessStaticDetection/FLAST#readme"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["py*"]
+include = ["src*"]
 
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-src = ["py", "tests"]
+src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = [
@@ -73,11 +73,12 @@ select = [
 ]
 ignore = [
     "PLR0913",  # Too many arguments
+    "PLR0915",  # Too many statements (experiment scripts have long functions)
     "PLR2004",  # Magic value used in comparison
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["py"]
+known-first-party = ["src"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -118,7 +119,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["py"]
+source = ["src"]
 branch = true
 
 [tool.coverage.report]
